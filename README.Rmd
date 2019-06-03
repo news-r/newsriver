@@ -1,0 +1,47 @@
+---
+output: github_document
+---
+
+<!-- README.md is generated from README.Rmd. Please edit that file -->
+
+```{r, include = FALSE}
+knitr::opts_chunk$set(
+  collapse = TRUE,
+  comment = "#>",
+  fig.path = "man/figures/README-",
+  out.width = "100%"
+)
+```
+
+<!-- badges: start -->
+[![Travis build status](https://travis-ci.org/news-r/newsriver.svg?branch=master)](https://travis-ci.org/news-r/newsriver)
+<!-- badges: end -->
+
+# newsriver
+
+R wrapper to the [newsriver.io](https://newsriver.io/), an API to obtain news articles.
+
+## Installation
+
+``` r
+# install.packages("remotes")
+remotes::install_github("news-r/newsriver")
+```
+
+## Setup
+
+First, [create an account](https://newsriver.io) to obtain an API key. Then either specify the aforementioned key using `newsriver_key` or specify it as environment variable (likely in your `.Renviron`) as `NEWSRIVER_API_KEY`.
+
+```r
+library(newsriver)
+newsriver_key("xXxxX")
+```
+
+## Example
+
+```{r example}
+library(newsriver)
+
+news <- nr_search('language:en AND text("Trump")')
+news[[1]]
+```
